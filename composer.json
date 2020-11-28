@@ -17,7 +17,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Ahmeddabak\\Sumsub\\Tests": "tests/"
+      "Ahmeddabak\\Sumsub\\Tests\\": "tests/"
     }
   },
   "require-dev": {
