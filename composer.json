@@ -1,0 +1,33 @@
+{
+  "name": "ahmeddabak/sumsub",
+  "description": "Sumsub KYC for Laravel",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ahmed Dabak",
+      "email": "contact@ahmeddabak.me"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Ahmeddabak\\Sumsub\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ahmeddabak\\Sumsub\\Tests": "tests/"
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.4"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Ahmeddabak\\Sumsub\\SumsubServiceProvider"
+      ]
+    }
+  }
+}
