@@ -1,11 +1,9 @@
 <?php
 
-
 namespace Ahmeddabak\Sumsub;
 
 use Ahmeddabak\Sumsub\Views\Components\Websdk;
 use Illuminate\Support\ServiceProvider;
-
 
 class SumsubServiceProvider extends ServiceProvider
 {
@@ -17,7 +15,7 @@ class SumsubServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/sumsub.php', 'sumsub'
+            __DIR__.'/../config/sumsub.php', 'sumsub'
         );
     }
 
@@ -29,7 +27,7 @@ class SumsubServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/sumsub.php' => config_path('sumsub.php'),
+            __DIR__.'/../config/sumsub.php' => config_path('sumsub.php'),
         ], 'config');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'sumsub');

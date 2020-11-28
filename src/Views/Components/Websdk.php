@@ -19,7 +19,6 @@ class Websdk extends Component
      */
     public function __construct($flow, $userId)
     {
-
         $this->flow = $flow;
         $this->userId = $userId;
         $this->token = $this->getToken($userId);
@@ -32,18 +31,18 @@ class Websdk extends Component
         $credentials = base64_encode("{$config['username']}:{$config['password']}");
 
         $payload_response = Http::withHeaders([
-            'Authorization' => 'Basic ' . $credentials,
+            'Authorization' => 'Basic '.$credentials,
         ])->post('https://api.sumsub.com/resources/auth/login')->json();
 
-        if (!isset($payload_response['payload'])) {
+        if (! isset($payload_response['payload'])) {
             throw new \Exception('No payload');
         }
 
         $token_response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $payload_response['payload'],
+            'Authorization' => 'Bearer '.$payload_response['payload'],
         ])->post("https://api.sumsub.com/resources/accessTokens?userId={$userId}")->json();
 
-        if (!isset($token_response['token'])) {
+        if (! isset($token_response['token'])) {
             throw new \Exception('No token');
         }
 
