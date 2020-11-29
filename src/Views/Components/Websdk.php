@@ -7,8 +7,8 @@ use Illuminate\View\Component;
 
 class Websdk extends Component
 {
-    protected string $flow;
-    protected string $userId;
+    protected $flow;
+    protected $userId;
 
     /**
      * Websdk constructor.
