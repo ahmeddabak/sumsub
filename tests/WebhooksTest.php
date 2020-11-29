@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Ahmeddabak\Sumsub\Tests;
-
 
 use Ahmeddabak\Sumsub\Events\WebhookEvent;
 use Ahmeddabak\Sumsub\SumsubServiceProvider;

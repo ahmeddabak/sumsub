@@ -17,7 +17,7 @@ class SumsubServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/sumsub.php', 'sumsub'
+            __DIR__.'/../config/sumsub.php', 'sumsub'
         );
     }
 
@@ -30,13 +30,13 @@ class SumsubServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/sumsub.php' => config_path('sumsub.php'),
+                __DIR__.'/../config/sumsub.php' => config_path('sumsub.php'),
             ], 'config');
         }
 
         Route::post('/webhooks/sumsub', WebhookController::class);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'sumsub');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'sumsub');
 
         $this->loadViewComponentsAs('sumsub', [
             Websdk::class,
