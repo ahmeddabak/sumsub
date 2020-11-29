@@ -23,7 +23,7 @@ class Websdk extends Component
 
     public function getToken()
     {
-        $timestamp = round(strtotime("now"));
+        $timestamp = round(strtotime('now'));
 
         $url = "/resources/accessTokens?userId={$this->userId}";
 

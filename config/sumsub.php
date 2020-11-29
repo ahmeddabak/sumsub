@@ -16,5 +16,5 @@ return [
      * https://api.sumsub.com for production
      * https://test-api.sumsub.com for testing
      */
-    'base_url' => env('SUMSUB_BASE_URL', 'https://api.sumsub.com')
+    'base_url' => env('SUMSUB_BASE_URL', 'https://api.sumsub.com'),
 ];
