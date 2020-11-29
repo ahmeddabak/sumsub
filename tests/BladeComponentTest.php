@@ -22,7 +22,7 @@ class BladeComponentTest extends TestCase
     /** @test */
     public function it_renders_a_view()
     {
-        $component = new Websdk('STEP','ID');
+        $component = new Websdk('STEP', 'ID');
 
         $view = $component->render();
 
