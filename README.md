@@ -15,8 +15,8 @@ composer require ahmeddabak/sumsub
 Add the user name and password to your ```.env``` file
 
 ```dotenv
-SUMSUB_USERNAME=YOUR_USERNAME
-SUMSUB_PASSWORD=YOUR_PASSWORD
+SUMSUB_APP_TOKEN=YOUR_APP_TOKEN
+SUMSUB_SECRET_KEY=YOUR_SECRET_KEY
 ```
 
 Then in your blade add the view component anywhere in the page body
