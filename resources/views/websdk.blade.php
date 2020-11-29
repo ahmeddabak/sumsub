@@ -2,7 +2,7 @@
 <script src="https://static.sumsub.com/idensic/static/sns-websdk-builder.js"></script>
 <script>
     let snsWebSdkInstance = snsWebSdk.Builder("https://api.sumsub.com", "{{$flow}}")
-        .withAccessToken("{{$token}}", (newAccessTokenCallback) => {
+        .withAccessToken("{{$getToken($userId)}}", (newAccessTokenCallback) => {
             newAccessTokenCallback("{{$getToken($userId)}}");
         }).withConf({
             lang: "en",

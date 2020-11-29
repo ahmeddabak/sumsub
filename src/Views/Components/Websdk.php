@@ -7,46 +7,36 @@ use Illuminate\View\Component;
 
 class Websdk extends Component
 {
-    public $flow;
-    public $userId;
-    public $token;
+    protected string $flow;
+    protected string $userId;
 
     /**
-     * Create the component instance.
-     *
-     * @param $flow
-     * @param $userId
+     * Websdk constructor.
+     * @param string $flow
+     * @param string $userId
      */
-    public function __construct($flow, $userId)
+    public function __construct(string $flow, string $userId)
     {
         $this->flow = $flow;
         $this->userId = $userId;
-        $this->token = $this->getToken($userId);
     }
 
-    public function getToken($userId)
+    public function getToken()
     {
-        $config = config('sumsub');
+        $timestamp = round(strtotime("now"));
 
-        $credentials = base64_encode("{$config['username']}:{$config['password']}");
+        $url = "/resources/accessTokens?userId={$this->userId}";
 
-        $payload_response = Http::withHeaders([
-            'Authorization' => 'Basic '.$credentials,
-        ])->post('https://api.sumsub.com/resources/auth/login')->json();
+        $signature = hash_hmac('sha256', "{$timestamp}POST{$url}[]", config('sumsub.secret_key'));
 
-        if (! isset($payload_response['payload'])) {
-            throw new \Exception('No payload');
-        }
+        $response = Http::baseUrl(config('sumsub.base_url'))
+            ->withHeaders([
+                'X-App-Token' => config('sumsub.app_token'),
+                'X-App-Access-Sig' => $signature,
+                'X-App-Access-Ts' => $timestamp,
+            ])->post($url)->object();
 
-        $token_response = Http::withHeaders([
-            'Authorization' => 'Bearer '.$payload_response['payload'],
-        ])->post("https://api.sumsub.com/resources/accessTokens?userId={$userId}")->json();
-
-        if (! isset($token_response['token'])) {
-            throw new \Exception('No token');
-        }
-
-        return $token_response['token'];
+        return optional($response)->token;
     }
 
     /**
